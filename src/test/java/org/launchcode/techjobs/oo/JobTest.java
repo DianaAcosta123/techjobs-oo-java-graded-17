@@ -50,6 +50,61 @@ public class JobTest {
 
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+
+        Job jobOne = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        char lastCharacter = jobOne.toString().charAt(0);
+        char firstCharacter = jobOne.toString().charAt(jobOne.toString().length()-1);
+
+        assertEquals(lastCharacter, '\n');
+        assertEquals(firstCharacter, '\n');
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+
+        Job jobOne = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        assertEquals(jobOne.toString(), "\nID: " + jobOne.getId() +
+                "\nName: " + jobOne.getName() +
+                "\nEmployer: " + jobOne.getEmployer().getValue() +
+                "\nLocation: " + jobOne.getLocation().getValue() +
+                "\nPosition Type: " + jobOne.getPositionType().getValue() +
+                "\nCore Competency: " + jobOne.getCoreCompetency().getValue() +
+                "\n");
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+
+        Job jobOne = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency(""));
+
+        assertEquals(jobOne.toString(), "\nID: " + jobOne.getId() +
+                "\nName: " + jobOne.getName() +
+                "\nEmployer: " + jobOne.getEmployer().getValue() +
+                "\nLocation: " + jobOne.getLocation().getValue() +
+                "\nPosition Type: " + jobOne.getPositionType().getValue() +
+                "\nCore Competency: " + "Data not available" +
+                "\n");
+
+
+    }
+
 
 
 }

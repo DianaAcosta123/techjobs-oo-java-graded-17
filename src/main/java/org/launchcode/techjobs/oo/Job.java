@@ -84,8 +84,61 @@ public class Job {
         return Objects.hash(id);
     }
 
+
+    @Override
+    public String toString() {
+        String newline = System.lineSeparator();
+
+        if (name.equals("")) {
+
+            setName("Data not available");
+
+        }
+
+        if (employer.getValue().equals("") || employer.getValue() == null) {
+
+            employer.setValue("Data not available");
+
+        }
+
+        if (location.getValue().equals("") || location.getValue() == null) {
+
+            location.setValue("Data not available");
+
+        }
+
+        if (positionType.getValue().equals("") || positionType.getValue() == null) {
+
+            positionType.setValue("Data not available");
+
+        }
+
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null) {
+
+            coreCompetency.setValue("Data not available");
+
+        }
+
+
+        return newline + "ID: " + id +
+                newline + "Name: " + name +
+                newline + "Employer: " + employer +
+                newline + "Location: " + location +
+                newline + "Position Type: " + positionType +
+                newline + "Core Competency: " + coreCompetency +
+                newline;
+
+    }
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+    //Job.toString(), "\nID: " + jobOne.getId() +
+    //       "\nName: " + jobOne.getName() +
+    //       "\nEmployer: " + jobOne.getEmployer().getValue() +
+    //       "\nLocation: " + jobOne.getLocation().getValue() +
+    //        "\nPosition Type: " + jobOne.getPositionType().getValue() +
+    //      "\nCore Competency: " + jobOne.getCoreCompetency().getValue() +
+    //      "\n")
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
